@@ -1,9 +1,7 @@
 #include <algorithm>
 #include <iostream>
-#include <string>
-#include <vector>
-#include <iostream>
 #include  <iomanip>
+#include <vector>
 
 using namespace std;
 
@@ -30,7 +28,7 @@ public:
 	else if (pages_[0] == 1) {
 		return 1;
 	}
-	return(pages_[0] - pages_[p - 1]) * 1.0 / (pages_[0] - 1) * 1.0;
+	return static_cast <double>(pages_[0] - pages_[p - 1]) / static_cast <double>(pages_[0] - 1) ;
 	}
 
 private:
@@ -42,7 +40,7 @@ private:
 };
 
 int main() {
-	Ebook ebbok;
+	Ebook ebook;
 	int count;
 	cin >> count;
 	for (int i = 0; i < count; ++i) {
@@ -52,11 +50,11 @@ int main() {
 		if (querry == "READ") {
 			int pages;
 			cin >> id >> pages;
-			ebbok.Read(id, pages);
+			ebook.Read(id, pages);
 		}
 		if (querry == "CHEER") {
 			cin >> id;
-			cout << setprecision(6) << ebbok.Cheer(id) << endl;
+			cout << setprecision(6) << ebook.Cheer(id) << endl;
 		}
 	}
 }
